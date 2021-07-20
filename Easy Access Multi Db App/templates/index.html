@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+    {% block body %}
+        
+        <div class="container">
+            <h2 class="text-center">Welcome to Multiple DataBase API Project</h2>
+            <form class="form" action="/" method="POST">
+
+                <div class="form-group">
+
+                    <label>Select your DataBase :</label>
+                
+                    <select class="form-select form-select-sm" name="db" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="sql">SQL DataBase</option>
+                        <option value="mongo">MongoDB DataBase</option>
+                        <option value="cassandra">Cassandra DataBase</option>
+                    </select>
+                    <br>
+                    <button class="submit btn btn-primary">Submit</button>
+
+                </div>
+        
+            </form>
+            <br>
+
+            <h6>Note: Sql/mySql uses local connection</h6>
+
+        </div>
+
+    {% endblock body %}
+

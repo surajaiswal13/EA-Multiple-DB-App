@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="container">
+        <h2 class="text-center">----- Present Databases Listed below -----</h2>
+        <hr>
+
+            <a class="btn btn-info" href="/sql/select_ops">Select Operation</a>
+
+            <br>
+
+            <br>
+
+            <!-- {% with messages = get_flashed_messages() %}  
+            {% if messages %}  
+                  {% for message in messages %}  
+                  <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                  </div>
+                  {% endfor %}  
+            {% endif %}  
+            {% endwith %}   -->
+
+            <br>
+
+            {{ html_format_display_db|safe }}
+
+
+    </div>
+
+
+{% endblock body %}
