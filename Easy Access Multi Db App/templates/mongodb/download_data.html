@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <form class="form" action="/mongo/download_data" method="POST">
+            <form>
+                <h2 class="text-center">----- Please Fill Download Details below -----</h2>
+                <hr>
+                <div class="form-group">
+                    <label >Enter Database Name :</label>
+                    <input type="text" class="form-control" name="database_name">
+                    <small class="form-text text-muted">Note: Do not use Spaces Instead use Underscores</small>
+                    <br>
+                     <br>
+                </div>
+                <div class="form-group">
+                    <label >Enter Collection Name :</label>
+                    <input type="text" class="form-control" name="collection_name">
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label >Enter File Name :</label>
+                    <input type="text" class="form-control" name="new_filename">
+                    <!-- <small class="form-text text-muted">Note: Use Full Path of the file else it will use current directory</small> -->
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-info" href="/mongo/select_ops">Select Operation</a>
+            </form>
+
+            <br>
+
+            {% with messages = get_flashed_messages() %}  
+            {% if messages %}  
+                  {% for message in messages %}  
+                  <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                  </div>
+                  {% endfor %}  
+            {% endif %}  
+            {% endwith %}  
+
+            <br>
+
+            <div class="lead">
+                <h6><mark>Note:</mark> A File with three Column can be uploaded</h6>
+            </div>
+    </div>
+
+{% endblock body %}

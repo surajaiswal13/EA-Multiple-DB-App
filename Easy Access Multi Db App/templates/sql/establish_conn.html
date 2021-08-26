@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <form class="form" action="/{{ selected_db }}/establish_connection" method="POST">
+        <form class="form" action="/{{ selected_db }}/establish_sql_connection" method="POST">
             <form>
                 <h2 class="text-center">----- Please Fill Connection Details below -----</h2>
                 <hr>
@@ -18,6 +18,11 @@
                     <label >Enter User Name :</label>
                     <input type="text" class="form-control" name="user_name">
                 </div>
+                <br>
+                <!-- <div class="form-group">
+                    <label >Enter DataBase Name :</label>
+                    <input type="text" class="form-control" name="db_name">
+                </div> -->
                 <br>
 
                 <div class="form-group">

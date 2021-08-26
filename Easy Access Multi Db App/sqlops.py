@@ -4,11 +4,17 @@ import csv
 class SqlOps():
     def __init__(self,host,user,password):
         self.host = host
+        # session['host'] = host
         self.user = user
+        # session['user'] = user
         self.password = password
-        db = connection.connect(host = self.host , user = self.user , password = self.password , use_pure = True)
-        self.db = db
-        self.cur = self.db.cursor()
+        # session['password'] = password
+        # self.db = db
+        conn = connection.connect(host = self.host , user = self.user , password = self.password , use_pure = True)
+        self.conn = conn
+        # session['db'] = db
+
+        self.cur = self.conn.cursor()
             
     def sql_show_db(self):
         self.cur.execute('SHOW DATABASES')

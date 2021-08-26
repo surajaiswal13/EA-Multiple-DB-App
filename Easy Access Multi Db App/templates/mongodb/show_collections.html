@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <form class="form" action="/mongo/show_all_collections" method="POST">
+            <form>
+                <h2 class="text-center">----- Please Fill Database Details below -----</h2>
+                <hr>
+                <div class="form-group">
+                    <label >Enter Database Name :</label>
+                    <input type="text" class="form-control" name="db_name">
+                    <small class="form-text text-muted">Note: Do not use Spaces Instead use Underscores</small>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-info" href="/mongo/select_ops">Select Operation</a>
+            </form>
+
+            <br>
+
+            {% with messages = get_flashed_messages() %}  
+            {% if messages %}  
+                  {% for message in messages %}  
+                  <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                  </div>
+                  {% endfor %}  
+            {% endif %}  
+            {% endwith %}  
+
+            <br>
+
+            {{ html_format_display_collections|safe }}
+
+
+    </div>
+
+{% endblock body %}

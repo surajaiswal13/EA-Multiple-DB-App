@@ -1,0 +1,38 @@
+{% include 'base.html' %}
+
+{% block body %}
+    
+    <div class="container">
+
+      <h2 class="text-center">----- Please Select Operation to Perform -----</h2>
+      <hr>
+
+        <form class="form" action="/mongo/select_ops" method="POST">
+                <div class="form-group">
+                  <label>Select MongoDB Operation to Perform :</label>
+                  
+                  <select class="form-select form-select-sm" name="mongo_operation" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="mongo_create_db">Create Database</option>
+                    <option value="create_collection">Create Collection</option>
+                    <option value="delete_db">Delete Database</option>
+                    <option value="delete_collection">Delete Collection</option>
+                    <option value="insert_single_record">Insert Single Record</option>
+                    <option value="bulk_insert_records">Bulk Insert Records</option>
+                    <option value="update_single_record">Update Single Record</option>
+                    <option value="update_multiple_record">Update Multiple Record</option>
+                    <option value="download_data">Download Data</option>
+                    <option value="display_all_data">Display All Data</option>
+                    <option value="show_all_db">Show All Databases</option>
+                    <option value="show_all_collections">Show all Collections</option>
+                  </select>
+
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+    </div>
+          
+
+{% endblock body %}

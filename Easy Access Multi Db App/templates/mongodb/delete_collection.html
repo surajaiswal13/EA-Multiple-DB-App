@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <form class="form" action="/mongo/delete_collection" method="POST">
+            <form>
+                <h2 class="text-center">----- Please Fill DataBase Details below -----</h2>
+                <hr>
+                <div class="form-group">
+                    <label >Enter Database Name :</label>
+                    <input type="text" class="form-control" name="database_name">
+                    <small class="form-text text-muted">Note: Do not use Spaces Instead use Underscores</small>
+                    <br>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label >Enter Collection Name :</label>
+                    <input type="text" class="form-control" name="collection_name">
+                    <br>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-info" href="/mongo/select_ops">Select Operation</a>
+                <br>
+            </form>
+
+            <br>
+
+            {% with messages = get_flashed_messages() %}  
+            {% if messages %}  
+                  {% for message in messages %}  
+                  <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                  </div>
+                  {% endfor %}  
+            {% endif %}  
+            {% endwith %}  
+
+
+    </div>
+
+{% endblock body %}
