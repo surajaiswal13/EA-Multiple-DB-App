@@ -529,10 +529,10 @@ def mongo_download_data():
         new_filename = request.form['new_filename']
         # session['new_filename'] = new_filename
 
-        os.chmod(os.path.join(os.getcwd()+'\\static\\files'), 0o777)
-        shutil.rmtree(os.path.join(os.getcwd()+'\\static\\files'), ignore_errors=True)
-        os.mkdir(os.path.join(os.getcwd()+'\\static',"files"))
-        print(os.path.join(os.getcwd()+'\\static',"files"))
+        os.chmod(os.path.join(os.getcwd()+'/static/files'), 0o777)
+        shutil.rmtree(os.path.join(os.getcwd()+'/static/files'), ignore_errors=True)
+        os.mkdir(os.path.join(os.getcwd()+'/static',"files"))
+        print(os.path.join(os.getcwd()+'/static',"files"))
         # time.sleep(8)
         MongoClient = MongoDBManagement(url=session['url'],password=session['mongo_password'])
         file = MongoClient.downloadDataFromCollection(db_name=database_name, collection_name=collection_name, file_name=new_filename)

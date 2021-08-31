@@ -439,7 +439,7 @@ class MongoDBManagement:
                 Temp_list.append(i)
             
             count = 0
-            path = os.path.join(os.getcwd()+'\\static\\files\\'+ file_name +'.csv')
+            path = os.path.join(os.getcwd()+'/static/files/'+ file_name +'.csv')
             print(path)
             with open(path,"w") as f:
                 
