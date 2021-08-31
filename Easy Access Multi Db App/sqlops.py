@@ -71,20 +71,41 @@ class SqlOps():
                 self.cur.execute('INSERT INTO '+table_name+' VALUES ("{p}","{q}","{r}")'.format(p=x[0],q=x[1],r=x[2]))
                 self.db.commit()
                 
-    def sql_download_data(self ,db_name , table_name , new_filename="sql_data"):
-        try:
-            self.cur.execute('USE '+db_name)
-            self.cur.execute('SELECT * FROM '+table_name)
-            data = self.cur.fetchall()
-            f = open(new_filename+'.csv' , "x")
-            for i in data:
-                j = str(i).replace('(','').replace(')','')
+    # def sql_download_data(self ,db_name , table_name , new_filename="sql_data"):
+    #     try:
+    #         self.cur.execute('USE '+db_name)
+    #         self.cur.execute('SELECT * FROM '+table_name)
+    #         data = self.cur.fetchall()
+    #         f = open(new_filename+'.csv' , "x")
+    #         for i in data:
+    #             j = str(i).replace('(','').replace(')','')
 
-                f.write(j+'\n')
-                # print(i)
-                # print(j)
-            return 'Data Downloaded in '+new_filename
-        except Exception as e:
-            print(e)
-        finally:
-            f.close()
+    #             f.write(j+'\n')
+    #             # print(i)
+    #             # print(j)
+    #         return 'Data Downloaded in '+new_filename
+    #     except Exception as e:
+    #         print(e)
+    #     finally:
+    #         f.close()
+
+    def sql_download_data(self ,db_name , table_name , new_filename="sql_data"):
+        # try:
+        self.cur.execute('USE '+db_name)
+        self.cur.execute('SELECT * FROM '+table_name)
+        data = self.cur.fetchall()
+        path = 'static\\files\\'+ new_filename +'.csv'
+        f = open(path, "x")
+        for i in data:
+            j = str(i).replace('(','').replace(')','')
+
+            f.write(j+'\n')
+            # print(i)
+            # print(j)
+        # return 'Data Downloaded in '+new_filename
+        f.close()
+        return path
+        # except Exception as e:
+        #     print(e)
+        # finally:
+        #     f.close()

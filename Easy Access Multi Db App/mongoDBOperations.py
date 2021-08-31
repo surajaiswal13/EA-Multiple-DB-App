@@ -1,6 +1,7 @@
 import pymongo
 import pandas as pd
 import json
+from flask import send_file
 
 
 class MongoDBManagement:
@@ -396,10 +397,39 @@ class MongoDBManagement:
             raise Exception(
                 f"(getResultToDisplayOnBrowser) - Something went wrong on getting result from database.\n" + str(e))
 
+    # def downloadDataFromCollection(self, db_name, collection_name, file_name):
+    #     """
+    #     This function returns the final result to display on browser.
+    #     """
+    #     try:
+    #         collection_check_status = self.isCollectionPresent(collection_name=collection_name, db_name=db_name)
+    #         if collection_check_status:
+    #             collection = self.getCollection(collection_name=collection_name, db_name=db_name)
+
+    #             Temp_list = []
+    #             for i in collection.find():
+    #                 Temp_list.append(i)
+                
+    #             count = 0
+    #             path = 'static\\files\\'+ file_name +'.csv'
+    #             print(path)
+    #             with open(path,"w") as f:
+                    
+    #                 for j in Temp_list:
+    #                     a = str(j)
+    #                     f.write(a+'\n')
+    #                     count += 1
+                
+    #             f.close()
+    #             return 'Number of Records in Collection :'+ str(len(Temp_list)) +' Wher NUmber of Records downloaded in file = '+ str(count)
+    #     except Exception as e:
+    #         print(e)
+
     def downloadDataFromCollection(self, db_name, collection_name, file_name):
         """
         This function returns the final result to display on browser.
         """
+        # try:
         collection_check_status = self.isCollectionPresent(collection_name=collection_name, db_name=db_name)
         if collection_check_status:
             collection = self.getCollection(collection_name=collection_name, db_name=db_name)
@@ -409,7 +439,9 @@ class MongoDBManagement:
                 Temp_list.append(i)
             
             count = 0
-            with open(file_name+'.csv','w') as f:
+            path = 'static\\files\\'+ file_name +'.csv'
+            print(path)
+            with open(path,"w") as f:
                 
                 for j in Temp_list:
                     a = str(j)
@@ -417,4 +449,6 @@ class MongoDBManagement:
                     count += 1
             
             f.close()
-            return 'Number of Records in Collection :'+ str(len(Temp_list)) +' Wher NUmber of Records downloaded in file = '+ str(count)
+            return path
+        # except Exception as e:
+        #     print(e)

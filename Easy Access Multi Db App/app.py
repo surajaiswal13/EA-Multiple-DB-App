@@ -3,6 +3,10 @@ from sqlops import SqlOps
 import pandas as pd
 import json
 from mongoDBOperations import MongoDBManagement
+from flask import send_file
+import os
+import shutil
+import time
 
 app = Flask(__name__)
 
@@ -238,10 +242,17 @@ def download_data():
             database_name = request.form['database_name']
             table_name = request.form['table_name']
             new_filename = request.form['new_filename']
+
+            os.chmod(os.path.join(os.getcwd()+'\\static\\files'), 0o777)
+            shutil.rmtree(os.path.join(os.getcwd()+'\\static\\files'), ignore_errors=True)
+            os.mkdir(os.path.join(os.getcwd()+'\\static',"files"))
+
             sql_obj = SqlOps(host =session['host'],user=session['user'],password=session['password'])
-            sql_obj.sql_download_data(database_name,table_name,new_filename)
+            file = sql_obj.sql_download_data(database_name,table_name,new_filename)
+            print(file)
             flash('Data Downloaded Successfully at '+new_filename)
-            return redirect('/sql/download_data')
+            # return redirect('/sql/download_data')
+            return send_file(file, as_attachment=True, mimetype="text/csv")
 
         return render_template('sql/download_data.html')
     except Exception as e:
@@ -516,14 +527,29 @@ def mongo_download_data():
             database_name = request.form['database_name']
             collection_name = request.form['collection_name']
             new_filename = request.form['new_filename']
+            # session['new_filename'] = new_filename
+
+            os.chmod(os.path.join(os.getcwd()+'\\static\\files'), 0o777)
+            shutil.rmtree(os.path.join(os.getcwd()+'\\static\\files'), ignore_errors=True)
+            os.mkdir(os.path.join(os.getcwd()+'\\static',"files"))
+            # time.sleep(8)
             MongoClient = MongoDBManagement(url=session['url'],password=session['mongo_password'])
-            MongoClient.downloadDataFromCollection(db_name=database_name, collection_name=collection_name, file_name=new_filename)
-            flash('Data Downloaded Successfully as '+new_filename+".csv")
-            return redirect('/mongo/download_data')
+            file = MongoClient.downloadDataFromCollection(db_name=database_name, collection_name=collection_name, file_name=new_filename)
+            print(file)            
+
+
+            # flash('Data Downloaded Successfully as '+new_filename+".csv")
+            # return redirect('/mongo/download_data')
+            return send_file(file, as_attachment=True, mimetype="text/csv")
+
+            # return render_template('mongodb/download_data.html')
 
         return render_template('mongodb/download_data.html')
     except Exception as e:
         return e
+    # else:
+    #     # return redirect('/mongo/download_data')
+    #     render_template('mongodb/download_data.html')
 
 # @app.route('/mongo/display_all_data',methods=['GET','POST'])
 # def mongo_display_all_data():
