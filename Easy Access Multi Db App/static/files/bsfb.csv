@@ -1,0 +1,28 @@
+{'_id': 5, 'name': 'abcd', 'Roll No': '1005', 'Branch': 'CSE'}
+{'_id': 3, 'name': 'abcd', 'Roll No': '1005', 'Branch': 'CSE'}
+{'_id': ObjectId('61256325e054d6c6cbd5b154'), 'a': 20, 'name': 'abcd', 'Roll No': '1005', 'Branch': 'CSE'}
+{'_id': ObjectId('612564d50dd3c707fe800504'), 'a': 20, 'name': 'abcd', 'Roll No': '1005', 'Branch': 'CSE'}
+{'_id': ObjectId('612564ea0dd3c707fe800506'), 'a': 20, 'name': 'abcd'}
+{'_id': ObjectId('612564fa0dd3c707fe800508'), 'a': 20}
+{'_id': ObjectId('6125754abec9163b765ff029'), 'a': 1}
+{'_id': ObjectId('612577eabec9163b765ff035'), 'b': '1'}
+{'_id': ObjectId('612577eabec9163b765ff036'), 'b': '1'}
+{'_id': ObjectId('612577eabec9163b765ff037'), 'b': '1'}
+{'_id': ObjectId('612577eabec9163b765ff038'), 'b': '1'}
+{'_id': ObjectId('61266630b31840836817f474'), 'b': '1'}
+{'_id': ObjectId('61266630b31840836817f475'), 'b': '1'}
+{'_id': ObjectId('61266630b31840836817f476'), 'b': '1'}
+{'_id': ObjectId('61266630b31840836817f477'), 'b': '1'}
+{'_id': ObjectId('6126668ef4242439064a328c'), 'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+{'_id': ObjectId('6126668ef4242439064a328d'), 'brand': 'Audi', 'model': 'Q6', 'year': 1980}
+{'_id': ObjectId('6126679dc2a0a6605ec8db78'), 'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+{'_id': ObjectId('6126679dc2a0a6605ec8db79'), 'brand': 'Audi', 'model': 'Q6', 'year': 1980}
+{'_id': ObjectId('612667e2c2a0a6605ec8db7b'), 'brand111': 'Ford', 'model': 'Mustang', 'year': 1964}
+{'_id': ObjectId('612667e2c2a0a6605ec8db7c'), 'brand': 'Audi', 'model': 'Q6', 'year': 1980}
+{'_id': ObjectId('612668ae9b20f823752de24a'), 'a': 1}
+{'_id': ObjectId('612668ae9b20f823752de24b'), 'b': [1, 2, 3]}
+{'_id': ObjectId('612668ae9b20f823752de24c'), 'c': 21}
+{'_id': ObjectId('6126691a3e1c65ba97517e27'), 'a': 1}
+{'_id': ObjectId('61266931f3428c0f4435bdc7'), 'a': 1}
+{'_id': ObjectId('6126b69d4f235e7b9e06aa05'), 'e': 14}
+{'_id': ObjectId('6126b7814f235e7b9e06aa07'), 'a': 1}
