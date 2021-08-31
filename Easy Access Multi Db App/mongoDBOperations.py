@@ -2,7 +2,7 @@ import pymongo
 import pandas as pd
 import json
 from flask import send_file
-
+import os
 
 class MongoDBManagement:
 
@@ -439,7 +439,7 @@ class MongoDBManagement:
                 Temp_list.append(i)
             
             count = 0
-            path = 'static\\files\\'+ file_name +'.csv'
+            path = os.path.join(os.getcwd()+'\\static\\files\\'+ file_name +'.csv')
             print(path)
             with open(path,"w") as f:
                 

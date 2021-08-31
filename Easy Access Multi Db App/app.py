@@ -522,34 +522,34 @@ def mongo_update_multiple_record():
 
 @app.route('/mongo/download_data',methods=['GET','POST'])
 def mongo_download_data():
-    try:
-        if request.method == 'POST':
-            database_name = request.form['database_name']
-            collection_name = request.form['collection_name']
-            new_filename = request.form['new_filename']
-            # session['new_filename'] = new_filename
+    # try:
+    if request.method == 'POST':
+        database_name = request.form['database_name']
+        collection_name = request.form['collection_name']
+        new_filename = request.form['new_filename']
+        # session['new_filename'] = new_filename
 
-            os.chmod(os.path.join(os.getcwd()+'\\static\\files'), 0o777)
-            shutil.rmtree(os.path.join(os.getcwd()+'\\static\\files'), ignore_errors=True)
-            os.mkdir(os.path.join(os.getcwd()+'\\static',"files"))
-            print(os.path.join(os.getcwd()+'\\static',"files"))
-            # time.sleep(8)
-            MongoClient = MongoDBManagement(url=session['url'],password=session['mongo_password'])
-            file = MongoClient.downloadDataFromCollection(db_name=database_name, collection_name=collection_name, file_name=new_filename)
-            print(file)            
-            # print("dcvs")
-            new_path = os.path.join(os.getcwd()+"\\"+file)
-            print(new_path)
-            return send_file(new_path, as_attachment=True, mimetype="text/csv")
-            
-            # flash('Data Downloaded Successfully as '+new_filename+".csv")
-            # return redirect('/mongo/download_data')
+        os.chmod(os.path.join(os.getcwd()+'\\static\\files'), 0o777)
+        shutil.rmtree(os.path.join(os.getcwd()+'\\static\\files'), ignore_errors=True)
+        os.mkdir(os.path.join(os.getcwd()+'\\static',"files"))
+        print(os.path.join(os.getcwd()+'\\static',"files"))
+        # time.sleep(8)
+        MongoClient = MongoDBManagement(url=session['url'],password=session['mongo_password'])
+        file = MongoClient.downloadDataFromCollection(db_name=database_name, collection_name=collection_name, file_name=new_filename)
+        print(file)            
+        # print("dcvs")
+        # new_path = os.path.join(os.getcwd()+"\\"+file)
+        # print(new_path)
+        return send_file(file, as_attachment=True, mimetype="text/csv")
+        
+        # flash('Data Downloaded Successfully as '+new_filename+".csv")
+        # return redirect('/mongo/download_data')
 
-            # return render_template('mongodb/download_data.html')
+        # return render_template('mongodb/download_data.html')
 
-        return render_template('mongodb/download_data.html')
-    except Exception as e:
-        return e
+    return render_template('mongodb/download_data.html')
+    # except Exception as e:
+    #     return e
     # else:
     #     # return redirect('/mongo/download_data')
     #     render_template('mongodb/download_data.html')
