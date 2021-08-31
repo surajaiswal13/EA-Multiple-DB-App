@@ -1,5 +1,6 @@
 import mysql.connector as connection
 import csv
+import os
 
 class SqlOps():
     def __init__(self,host,user,password):
@@ -94,7 +95,7 @@ class SqlOps():
         self.cur.execute('USE '+db_name)
         self.cur.execute('SELECT * FROM '+table_name)
         data = self.cur.fetchall()
-        path = 'static\\files\\'+ new_filename +'.csv'
+        path = os.path.join(os.getcwd()+'/static/files/'+ new_filename +'.csv')
         f = open(path, "x")
         for i in data:
             j = str(i).replace('(','').replace(')','')

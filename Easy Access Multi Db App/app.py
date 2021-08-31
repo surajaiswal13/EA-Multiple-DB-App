@@ -237,27 +237,27 @@ def update_table():
 
 @app.route('/sql/download_data',methods=['GET','POST'])
 def download_data():
-    try:
-        if request.method == 'POST':
-            database_name = request.form['database_name']
-            table_name = request.form['table_name']
-            new_filename = request.form['new_filename']
+    # try:
+    if request.method == 'POST':
+        database_name = request.form['database_name']
+        table_name = request.form['table_name']
+        new_filename = request.form['new_filename']
 
-            os.chmod(os.path.join(os.getcwd()+'\\static\\files'), 0o777)
-            shutil.rmtree(os.path.join(os.getcwd()+'\\static\\files'), ignore_errors=True)
-            os.mkdir(os.path.join(os.getcwd()+'\\static',"files"))
+        os.chmod(os.path.join(os.getcwd()+'/static/files'), 0o777)
+        shutil.rmtree(os.path.join(os.getcwd()+'/static/files'), ignore_errors=True)
+        os.mkdir(os.path.join(os.getcwd()+'/static',"files"))
 
-            sql_obj = SqlOps(host =session['host'],user=session['user'],password=session['password'])
-            file = sql_obj.sql_download_data(database_name,table_name,new_filename)
-            print(file)
-            flash('Data Downloaded Successfully at '+new_filename)
-            # return redirect('/sql/download_data')
-            return send_file(file, as_attachment=True, mimetype="text/csv")
+        sql_obj = SqlOps(host =session['host'],user=session['user'],password=session['password'])
+        file = sql_obj.sql_download_data(database_name,table_name,new_filename)
+        print(file)
+        flash('Data Downloaded Successfully at '+new_filename)
+        # return redirect('/sql/download_data')
+        return send_file(file, as_attachment=True, mimetype="text/csv")
 
-        return render_template('sql/download_data.html')
-    except Exception as e:
-        flash('File with name "'+new_filename+'" already exists.')
-        return e
+    return render_template('sql/download_data.html')
+    # except Exception as e:
+    #     flash('File with name "'+new_filename+'" already exists.')
+    #     return e
 
 @app.route('/sql/display_all_data',methods=['GET','POST'])
 def display_all_data():
